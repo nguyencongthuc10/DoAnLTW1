@@ -18,7 +18,7 @@
 
 <!--Header-part-->
 <div id="header">
-	<h1><a href="dashboard.php">Dashboard</a></h1>
+	<h1><a href="dashboard.html">Dashboard</a></h1>
 </div>
 <!--close-Header-part-->
 
@@ -52,7 +52,7 @@
 
 <!--start-top-serch-->
 <div id="search">
-	<form action="result.html" method="get">
+	<form action="result.php" method="get">
 	<input type="text" placeholder="Search here..." name="key"/>
 	<button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
 </form>
@@ -90,7 +90,7 @@
 					<div class="widget-content nopadding">
 
 						<!-- BEGIN USER FORM -->
-						<form action="#" method="post" class="form-horizontal" enctype="multipart/form-data">
+						<form action="db.php" method="post" class="form-horizontal" enctype="multipart/form-data">
 							<div class="control-group">
 								<label class="control-label">Name :</label>
 								<div class="controls">
@@ -101,10 +101,11 @@
 								<label class="control-label">Choose a product type :</label>
 								<div class="controls">
 									<select name="type_id">
-										<option value="4">Speaker</option>
-										<option value="3">Laptop</option>
-										<option value="2">Tablet</option>
-										<option value="1">Cellphone</option>
+										<option value="114">Tai nghe</option>
+										<option value="113">Loa</option>
+										<option value="112">Laptop</option>
+										<option value="115">Tablet</option>
+										<option value="111">Dien thoai</option>
 
 									</select> *
 								</div>
@@ -113,11 +114,11 @@
 								<label class="control-label">Choose a manufacture :</label>
 								<div class="controls">
 									<select name="manu_id">
-										<option value="5">Oppo</option>
-										<option value="4">SamSung</option>
-										<option value="3">Sony</option>
-										<option value="2">Microsoft</option>
-										<option value="1">Apple</option>
+										<option value="1005">Oppo</option>
+										<option value="1002">SamSung</option>
+										<option value="1003">Huawei</option>
+										<option value="1004">Nokia</option>
+										<option value="1001">Apple</option>
 
 									</select> *
 								</div>
@@ -128,7 +129,7 @@
 									</div>
 								</div>
 								<div class="control-group">
-									<label class="control-label" >Description</label>
+									<label class="control-label"  >Description</label>
 									<div class="controls">
 										<textarea class="span11" placeholder="Description" name = "description"></textarea>
 									</div>
@@ -141,7 +142,6 @@
 									</div>
 
 									<div class="form-actions">
-										
 										<button type="submit" class="btn btn-success">Add</button>
 									</div>
 								</div>
@@ -161,7 +161,7 @@
 
 <!--Footer-part-->
 <div class="row-fluid">
-	<div id="footer" class="span12"> 2017 &copy; TDC - Lập trình web 1</div>
+	<div id="footer" class="span12"> 2018 &copy; TDC - Lập trình web 1</div>
 </div>
 <!--end-Footer-part-->
 <script src="public/js/jquery.min.js"></script>

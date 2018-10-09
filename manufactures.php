@@ -18,7 +18,7 @@
 
 <!--Header-part-->
 <div id="header">
-	<h1><a href="dashboard.php">Dashboard</a></h1>
+	<h1><a href="dashboard.html">Dashboard</a></h1>
 </div>
 <!--close-Header-part-->
 
@@ -52,7 +52,7 @@
 
 <!--start-top-serch-->
 <div id="search">
-	<form action="result.html" method="get">
+	<form action="result.php" method="get">
 	<input type="text" placeholder="Search here..." name="key"/>
 	<button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
 </form>
@@ -61,7 +61,7 @@
 
 <!--sidebar-menu-->
 
-<div id="sidebar"> <a href="form.html" class="visible-phone"><i class="icon icon-th"></i>Tables</a>
+<div id="sidebar"> <a href="form.php" class="visible-phone"><i class="icon icon-th"></i>Tables</a>
 	<ul>
 		<li><a href="index.php"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
 
@@ -75,7 +75,7 @@
 <!-- BEGIN CONTENT -->
 <div id="content">
 	<div id="content-header">
-		<div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
+		<div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
 		<h1>Manage Producer</h1>
 	</div>
 	<div class="container-fluid">
@@ -83,7 +83,7 @@
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="widget-box">
-					<div class="widget-title"> <span class="icon"><a href="form_manufacture.html"><i class="icon-plus"></i></a></span>
+					<div class="widget-title"> <span class="icon"><a href="form_manufacture.php"><i class="icon-plus"></i></a></span>
 						<h5>Products</h5>
 					</div>
 					<div class="widget-content nopadding">
@@ -97,53 +97,28 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr class="">
-								<td>5</td>
-								<td>Oppo</td>
-								<td><img src="images/fb_1200x628.png" style="width:100px"></td>
-								<td>
-									<a href="#" class="btn btn-success btn-mini">Edit</a>
-									<a href="#" class="btn btn-danger btn-mini">Delete</a>
-								</td>
-							</tr>
-							<tr class="">
-								<td>4</td>
-								<td>SamSung</td>
-								<td><img src="images/BrandLogos-SAMSUNG-Retina-COLOR.png" style="width:100px"></td>
-								<td>
-									<a href="#" class="btn btn-success btn-mini">Edit</a>
-									<a href="#" class="btn btn-danger btn-mini">Delete</a>
-								</td>
-							</tr>
-							<tr class="">
-								<td>3</td>
-								<td>Sony</td>
-								<td><img src="images/sony-og.jpg" style="width:100px"></td>
-								<td>
-									<a href="#" class="btn btn-success btn-mini">Edit</a>
-									<a href="#" class="btn btn-danger btn-mini">Delete</a>
-								</td>
-							</tr>
-							<tr class="">
-								<td>2</td>
-								<td>Microsoft</td>
-								<td><img src="images/microsoft.png" style="width:100px"></td>
-								<td>
-									<a href="#" class="btn btn-success btn-mini">Edit</a>
-									<a href="#" class="btn btn-danger btn-mini">Delete</a>
-								</td>
-							</tr>
-							<tr class="">
-								<td>1</td>
-								<td>Apple</td>
-								<td><img src="images/open_graph_logo.png" style="width:100px"></td>
-								<td>
-									<a href="#" class="btn btn-success btn-mini">Edit</a>
-									<a href="#" class="btn btn-danger btn-mini">Delete</a>
-									
-								</td>
-							</tr>
 
+							<?php
+							require "db.php";
+							$db = new Db();
+							$manufac = $db->getmanufactures();
+							//var_dump($manufac);
+
+							foreach ($manufac as $value) {
+							?>
+							<tr class="">
+								<td><?php echo $value['manu_ID']; ?></td>
+								<td><?php echo $value['manu_name']; ?></td>
+								<td><img  width="200px" src="public/images/<?php echo $value['manu_img']; ?>" ></td>
+								<td>
+									<a href="#" class="btn btn-success btn-mini">Edit</a>
+									<a href="#" class="btn btn-danger btn-mini">Delete</a>
+								</td>
+							</tr>
+							<?php 
+							} 
+							?>
+							
 							</tbody>
 						</table>
 					</div>
@@ -156,7 +131,7 @@
 
 <!--Footer-part-->
 <div class="row-fluid">
-	<div id="footer" class="span12"> 2017 &copy; TDC - Lập trình web 1</div>
+	<div id="footer" class="span12"> 2018 &copy; TDC - Lập trình web 1</div>
 </div>
 <!--end-Footer-part-->
 <script src="public/js/jquery.min.js"></script>

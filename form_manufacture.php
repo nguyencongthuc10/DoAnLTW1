@@ -18,7 +18,7 @@
 
 <!--Header-part-->
 <div id="header">
-	<h1><a href="dashboard.php">Dashboard</a></h1>
+	<h1><a href="dashboard.html">Dashboard</a></h1>
 </div>
 <!--close-Header-part-->
 
@@ -52,7 +52,7 @@
 
 <!--start-top-serch-->
 <div id="search">
-	<form action="result.html" method="get">
+	<form action="result.php" method="get">
 	<input type="text" placeholder="Search here..." name="key"/>
 	<button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
 </form>
@@ -126,7 +126,7 @@
 <!-- END CONTENT -->
 <!--Footer-part-->
 <div class="row-fluid">
-	<div id="footer" class="span12"> 2017 &copy; TDC - Lập trình web 1</div>
+	<div id="footer" class="span12"> 2018 &copy; TDC - Lập trình web 1</div>
 </div>
 <!--end-Footer-part-->
 <script src="public/js/jquery.min.js"></script>

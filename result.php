@@ -1,7 +1,4 @@
-<?php
-require 'config.php';
-require 'db.php'; 
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +76,7 @@ require 'db.php';
 <div id="content">
 	<div id="content-header">
 		<div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
-		<h1>Search Result:</h1>
+		<h1>Search Result: <?php echo $_GET['key']; ?></h1>
 	</div>
 	<div class="container-fluid">
 		<hr>
@@ -104,33 +101,56 @@ require 'db.php';
 							</thead>
 							<tbody>
 							<?php
-							
-							// lay du lieu tu cai nhap vao
-							$timkiem = $_GET['key'];
-							$db = new db();
-							$timkiem1 = $db->timkiem($timkiem);
+							require "db.php";
+							$key = $_GET['key'];
 
-							foreach ($timkiem1 as $value) {
-								?>
-								<tr class="">
-								<td><img src="public/images/<?php echo $value['image']?>" /></td>
-								<td><?php echo $value['name'] ?></td>
-								<td><?php echo $value['type_name']?></td>
-								<td><?php echo $value['manu_name']?></td>
-								<td><?php echo $value['description']?></td>
-								<td><?php echo $value['price']?></td>
+							
+
+
+							$db = new Db();
+							$timkiem = $db->timkiem($key);
+							//var_dump($timkiem);
+
+
+							$per_page = 5;
+							if (isset($_GET['page']) == NULL)
+								{ 
+									$page = 1; 
+								}
+							else   
+								$page = $_GET['page'];   
+							$total = count($timkiem);
+							
+							//var_dump($total); 
+							$url = $_SERVER['PHP_SELF'];
+
+							//$product2 = $db->getAllProducts($page, $per_page);	
+
+
+							foreach ($timkiem as $value) {
+							 ?>
+							<tr class="">
+								<td><img src="public/images/<?php echo $value['image']; ?>" /></td>
+								<td><?php echo $value['name']; ?></td>
+								<td><?php echo $value['type_name']; ?></td>
+								<td><?php echo $value['manu_name']; ?></td>
+								<td><?php echo $value['description']; ?></td>
+								<td><?php echo $value['price']; ?></td>
 								<td>
-									<a href="form.php" class="btn btn-success btn-mini">Edit</a>
-									<a href="xoa.php?id=<?php echo $value['ID']?>" class="btn btn-danger btn-mini">Delete</a>
+									<a href="edit.html" class="btn btn-success btn-mini">Edit</a>
+									<form action="" method="">
+										<input type="submit" class="btn btn-danger btn-mini" value="Delete">
+									</form>
 								</td>
 							</tr>
 							<?php 
 							}
-							
 							?>
-
 							</tbody>
 						</table>
+						<ul class="pagination">
+							<?php echo $db->paginate($url, $total, $page, $per_page); ?>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -140,7 +160,7 @@ require 'db.php';
 <!-- END CONTENT -->
 <!--Footer-part-->
 <div class="row-fluid">
-	<div id="footer" class="span12"> 2017 &copy; TDC - Lập trình web 1</div>
+	<div id="footer" class="span12"> 2018 &copy; TDC - Lập trình web 1</div>
 </div>
 <!--end-Footer-part-->
 <script src="public/js/jquery.min.js"></script>

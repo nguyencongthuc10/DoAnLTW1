@@ -1,6 +1,5 @@
 
 <?php
-require 'config.php';
 require 'db.php'; 
 ?>
 <!DOCTYPE html>
@@ -119,9 +118,24 @@ require 'db.php';
 							</thead>
 							<tbody>
 							<?php $db = new db;
-							$product1 = $db->product1();
+							//$product1 = $db->product1();
+
+							$per_page = 5;
+							if (isset($_GET['page']) == NULL)
+								{ 
+									$page = 1; 
+								}
+							else   
+								$page = $_GET['page'];   
+							$total = $db->getAllpd();
+							//var_dump($total); 
+							$url = $_SERVER['PHP_SELF'];
+
+							$product2 = $db->getAllProducts($page, $per_page);
+							//var_dump($prodyct2);
 							
-							foreach ($product1 as $value) {
+							
+							foreach ($product2 as $value) {
 							?>
 							<tr class="">
 								<td><img src="public/images/<?php echo $value['image']?>" /></td>
@@ -144,9 +158,7 @@ require 'db.php';
 						</tbody>
 						</table>
 						<ul class="pagination">
-							<li class="active"><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
+							<?php echo $db->paginate($url, $total, $page, $per_page); ?>
 						</ul>
 						
 					</div>
