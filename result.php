@@ -1,4 +1,12 @@
+<?php
+require "db.php";
+$db = new Db();
 
+if (isset($_GET['key'])) {
+	$key = $_GET['key'];
+}else
+	$key = ""; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,7 +98,7 @@
 <div id="content">
 	<div id="content-header">
 		<div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
-		<h1>Search Result: <?php echo $_GET['key']; ?></h1>
+		<h1>Search Result: <?php echo $key ?></h1>
 	</div>
 	<div class="container-fluid">
 		<hr>
@@ -116,19 +124,13 @@
 							<tbody>
 
 							<?php
-							require "db.php";
-							
-							$key = $_GET['key'];
-								
-							$db = new Db();
-
 							$per_page = 5;
-							if (isset($_GET['page']) == NULL)
+							if (isset($_GET['page']))
 								{ 
-									$page = 1; 
+									$page = $_GET['page'];  
 								}
 							else   
-								$page = $_GET['page'];   
+								 $page = 1; 
 							$total = $db->demtimkiem($key);
 							
 							//var_dump($total); 

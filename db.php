@@ -39,6 +39,13 @@ public function xoa($id)
 	header('location:index.php');
 }
 
+public function xoaManufacture($manu_id)
+{
+	$sql = "DELETE FROM `manufactures` WHERE `manu_ID` = $manu_id";
+	$result = self::$conn->query($sql);
+	header('location:manufactures.php');
+}
+
 
 public function getmanufactures() {
 	$sql = "SELECT * FROM `manufactures`";
@@ -119,7 +126,12 @@ public function themProduct($name, $price, $image, $description, $manu_id,$type_
 	$sql = "INSERT INTO `products`(`name`, `price`, `image`, `description`, `manu_ID`, `type_ID`) VALUES 
 	('$name', '$price', '$image', '$description', '$manu_id', '$type_id')";
 	$result = self::$conn->query($sql);
-	header('location:form.php');
+	//header('location:form.php');
+}
+
+public function themManufacture($manu_ID, $manu_name, $manu_img){
+	$sql = "INSERT INTO `manufactures`(`manu_ID`, `manu_name`, `manu_img`) VALUES ('$manu_ID','$manu_name', '$manu_img')";
+	$result = self::$conn->query($sql);
 }
 
 public function getProtype(){

@@ -90,7 +90,17 @@
 					<div class="widget-content nopadding">
 
 						<!-- BEGIN USER FORM -->
-						<form action="#" method="post" class="form-horizontal" enctype="multipart/form-data">
+						<form action="uploadManufacture.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+							
+
+							<div class="control-group">
+								<label class="control-label">Manu_ID :</label>
+								<div class="controls">
+									<input type="text" class="span11" placeholder="Manu_ID" name="manu_ID" /> *
+								</div>
+							</div>
+
+
 							<div class="control-group">
 								<label class="control-label">Manufacture Name :</label>
 								<div class="controls">

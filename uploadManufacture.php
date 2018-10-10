@@ -1,29 +1,19 @@
-<?php
+<?php 
 require "db.php";
 
-//kiem tra name khong duoc de trong
-if (isset($_POST['name'])? $_POST['name'] : ""){
-	$name = $_POST['name'];
+if (isset($_POST['manu_ID'])? $_POST['manu_ID'] : ""){
+	$manu_ID = $_POST['manu_ID'];
 }else{
-	echo "Name khong duoc de trong<br>";
-	exit();
+	echo "Manu_ID khong duoc de trong.<br>";
+	exit(); 
 }
 
-
-
-$type_id = $_POST['type_id'];
-$manu_id = $_POST['manu_id'];
-$description = $_POST['description'];
-$price = $_POST['price'];
-/* 
-var_dump($name);
-var_dump($price);
-var_dump($image);
-var_dump($description);
-var_dump($manu_id);
-var_dump($type_id);
-*/
-
+if (isset($_POST['manu_name'])? $_POST['manu_name'] : ""){
+	$manu_name = $_POST['manu_name'];
+}else{
+	echo "Manufacture Name khong duoc de trong.<br>";
+	exit(); 
+}
 
 $targetDir = "public/images/";
 $targetFile = $targetDir.basename($_FILES['fileUpload']['name']);
@@ -77,10 +67,9 @@ if (move_uploaded_file($_FILES['fileUpload']['tmp_name'], $targetFile)){
 	exit();
 }
 
-
-$image = basename($_FILES['fileUpload']['name']);
+$manu_img = basename($_FILES['fileUpload']['name']);
 
 $db = new Db();
-$db->themProduct($name, $price, $image, $description, $manu_id, $type_id);
-//thong bao cap nhat du lieu thanh cong 
-echo "Cap nhat du lieu thanh cong.<br>";
+$db->themManufacture($manu_ID, $manu_name, $manu_img);
+//thong bao cap nhat manufacture thanh cong
+echo "Cap nhat manufactures thanh cong.";
