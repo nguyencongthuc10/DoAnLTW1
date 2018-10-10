@@ -16,7 +16,7 @@ public function __destruct()
 {
 	self::$conn->close();	
 }
-// dua du lieu vao chuyen tjhanh mang
+// dua du lieu vao chuyen thanh mang
 public function getData($obj)
 {
 	$arr = array();
@@ -26,25 +26,6 @@ public function getData($obj)
 	return $arr;
 }
 
-//public function product1()
-//{
-	//Viet cau SQL
-	//$sql = "SELECT `name`,`price` FROM `products`,`manufactures` 
-	//WHERE `products`.`manu_ID` = `manufactures`.`manu_ID`
-	//AND `manufactures`.`manu_name` = 'Apple'";
-	////Thuc thi cau truy van
-	//$result = self::$conn->query($sql);
-	//return $this->getData($result);	
-//}
-
-//public function product2()
-//{
-//Viet cau SQL
-	//$sql = "SELECT `price`,`name`,`ID` FROM `products` WHERE `price` > 1000000";
-	//Thuc thi cau truy van
-	//$result = self::$conn->query($sql);
-	//return $this->getData($result);	
-//}
 public function product1()
 {
 	$sql =" SELECT * FROM `protypes`,`manufactures`,`products` WHERE `products`.`manu_ID` = `manufactures`.`manu_ID` AND `products`.`type_ID` = `protypes`.`type_ID` ORDER BY `ID` DESC";
@@ -58,18 +39,31 @@ public function xoa($id)
 	header('location:index.php');
 }
 
+
 public function getmanufactures() {
 	$sql = "SELECT * FROM `manufactures`";
 	$result = self::$conn->query($sql);
 	return $this->getData($result);
 }
 
-public function timkiem($key) {
+public function demtimkiem($key) {
 	$key1 = "%".$key."%";
 	$sql = "SELECT * FROM `products`,`protypes`,`manufactures` WHERE `products`.`manu_ID` = `manufactures`.`manu_ID` AND `products`.`type_ID` = `protypes`.`type_ID` AND `description` LIKE '$key1' ORDER BY `ID` DESC";
 	$result = self::$conn->query($sql);
+	$soluong = mysqli_num_rows($result);
+	return $soluong;
+}
+
+
+public function timkiem1($page, $per_page, $key) {
+	$first_link = ($page - 1) * $per_page; 
+	$key1 = "%".$key."%";
+	$sql = "SELECT * FROM `products`,`protypes`,`manufactures` WHERE `products`.`manu_ID` = `manufactures`.`manu_ID` AND `products`.`type_ID` = `protypes`.`type_ID` AND `description` LIKE '$key1' ORDER BY `ID` DESC 
+		LIMIT $first_link, $per_page";
+	$result = self::$conn->query($sql);
 	return $this->getData($result);
 }
+
 
 public function getAllProducts($page, $per_page)
 {
@@ -98,6 +92,21 @@ public function paginate($url, $total, $page, $per_page)
 	return $link; 
 } 
 
+
+public function paginate1($url, $total, $page, $per_page, $key)
+{
+	$total_links = ceil($total/$per_page);
+	  
+	$link =""; 
+	     
+	for($j=1; $j <= $total_links ; $j++) 
+	      {
+	       $link = $link."<a href='$url?page=$j&key=$key'> $j </a>";
+	      }       
+	return $link; 
+} 
+
+
 public function getAllpd()
 {
 	$sql = "SELECT * FROM `products`";
@@ -106,6 +115,23 @@ public function getAllpd()
 	return $soluong;
 }
 
+public function themProduct($name, $price, $image, $description, $manu_id,$type_id){
+	$sql = "INSERT INTO `products`(`name`, `price`, `image`, `description`, `manu_ID`, `type_ID`) VALUES 
+	('$name', '$price', '$image', '$description', '$manu_id', '$type_id')";
+	$result = self::$conn->query($sql);
+	header('location:form.php');
+}
 
+public function getProtype(){
+	$sql = "SELECT `type_ID`,`type_name` FROM `protypes`";
+	$result = self::$conn->query($sql);
+	return $this->getData($result);
+}
+
+public function getManuID(){
+	$sql = "SELECT `manu_ID`,`manu_name` FROM `manufactures`";
+	$result = self::$conn->query($sql);
+	return $this->getData($result);
+}
 
 }

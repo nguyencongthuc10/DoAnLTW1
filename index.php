@@ -117,7 +117,7 @@ require 'db.php';
 							</tr>
 							</thead>
 							<tbody>
-							<?php $db = new db;
+							<?php $db = new db();
 							//$product1 = $db->product1();
 
 							$per_page = 5;

@@ -13,6 +13,20 @@
 	<link rel="stylesheet" href="public/css/matrix-media.css" />
 	<link href="public/font-awesome/css/font-awesome.css" rel="stylesheet" />
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		ul.pagination{
+			list-style: none;
+			float: right;
+		}
+		ul.pagination li.active{
+			font-weight: bold
+		}
+		ul.pagination li{
+		  float: left;
+		  display: inline-block;
+		  padding: 10px
+		}
+	</style>
 </head>
 <body>
 
@@ -83,7 +97,7 @@
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="widget-box">
-					<div class="widget-title"> <span class="icon"><a href="form.html"> <i class="icon-plus"></i> </a></span>
+					<div class="widget-title"> <span class="icon"><a href="form.php"> <i class="icon-plus"></i> </a></span>
 						<h5>Products</h5>
 					</div>
 					<div class="widget-content nopadding">
@@ -100,17 +114,13 @@
 							</tr>
 							</thead>
 							<tbody>
+
 							<?php
 							require "db.php";
-							$key = $_GET['key'];
-
 							
-
-
+							$key = $_GET['key'];
+								
 							$db = new Db();
-							$timkiem = $db->timkiem($key);
-							//var_dump($timkiem);
-
 
 							$per_page = 5;
 							if (isset($_GET['page']) == NULL)
@@ -119,15 +129,15 @@
 								}
 							else   
 								$page = $_GET['page'];   
-							$total = count($timkiem);
+							$total = $db->demtimkiem($key);
 							
 							//var_dump($total); 
 							$url = $_SERVER['PHP_SELF'];
 
-							//$product2 = $db->getAllProducts($page, $per_page);	
+							$timkiem1 = $db->timkiem1($page, $per_page, $key);	
 
 
-							foreach ($timkiem as $value) {
+							foreach ($timkiem1 as $value) {
 							 ?>
 							<tr class="">
 								<td><img src="public/images/<?php echo $value['image']; ?>" /></td>
@@ -137,10 +147,8 @@
 								<td><?php echo $value['description']; ?></td>
 								<td><?php echo $value['price']; ?></td>
 								<td>
-									<a href="edit.html" class="btn btn-success btn-mini">Edit</a>
-									<form action="" method="">
-										<input type="submit" class="btn btn-danger btn-mini" value="Delete">
-									</form>
+									<a href="form.php" class="btn btn-success btn-mini">Edit</a>
+									<a href="xoa.php?id=<?php echo $value['ID']?>" class="btn btn-danger btn-mini">Delete</a>
 								</td>
 							</tr>
 							<?php 
@@ -149,10 +157,12 @@
 							</tbody>
 						</table>
 						<ul class="pagination">
-							<?php echo $db->paginate($url, $total, $page, $per_page); ?>
+							<?php echo $db->paginate1($url, $total, $page, $per_page, $key); ?>
 						</ul>
 					</div>
+					
 				</div>
+				
 			</div>
 		</div>
 	</div>

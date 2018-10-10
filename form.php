@@ -1,4 +1,7 @@
+<?php 
+require "db.php";
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,7 +93,7 @@
 					<div class="widget-content nopadding">
 
 						<!-- BEGIN USER FORM -->
-						<form action="db.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+						<form action="upload.php" method="post" class="form-horizontal" enctype="multipart/form-data">
 							<div class="control-group">
 								<label class="control-label">Name :</label>
 								<div class="controls">
@@ -101,11 +104,19 @@
 								<label class="control-label">Choose a product type :</label>
 								<div class="controls">
 									<select name="type_id">
-										<option value="114">Tai nghe</option>
-										<option value="113">Loa</option>
-										<option value="112">Laptop</option>
-										<option value="115">Tablet</option>
-										<option value="111">Dien thoai</option>
+
+										<?php
+										$db = new Db();
+										$protype1 = $db->getProtype();
+										foreach ($protype1 as  $value) {
+											# code...
+										
+										?>
+
+										<option value="<?php echo $value['type_ID'] ?>"><?php echo $value['type_name'] ?></option>
+										<?php
+										}
+										?>
 
 									</select> *
 								</div>
@@ -114,11 +125,19 @@
 								<label class="control-label">Choose a manufacture :</label>
 								<div class="controls">
 									<select name="manu_id">
-										<option value="1005">Oppo</option>
-										<option value="1002">SamSung</option>
-										<option value="1003">Huawei</option>
-										<option value="1004">Nokia</option>
-										<option value="1001">Apple</option>
+
+										<?php
+										$manufactures1 = $db->getManuID();
+
+										foreach ($manufactures1 as  $value) {
+											# code...
+										?>
+
+										<option value="<?php echo $value['manu_ID'] ?>"><?php echo $value['manu_name'] ?></option>
+										
+										<?php
+										}
+										?>
 
 									</select> *
 								</div>
