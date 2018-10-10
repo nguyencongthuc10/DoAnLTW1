@@ -25,27 +25,27 @@ if (isset($_POST['submit'])) {
 		echo "File is an name - ".$check['mime'].".";
 		$uploadOK = 1;
 	}else{
-		echo "File is not an images.";
+		echo "File is not an images.<br>";
 		$uploadOK = 0;
 	}
 }
 
 //kiem tra file co ton tai tren sever hay khong 
 if (file_exists($targetFile)){
-	echo "Xin loi, file da ton tai.";
+	echo "Xin loi, file da ton tai.<br>";
 	$uploadOK = 0;
 }
 
 
 //gioi han kich thuoc file
 if ($_FILES['fileUpload']['size'] > 100000 ){
-	echo "Xin loi, file cua ban vuot qua 100kb.";
+	echo "Xin loi, file cua ban vuot qua 100kb.<br>";
 	$uploadOK = 0;
 }
 
 //gioi han loai file 
 if ($imageFileType != "jpg") {
-	echo "Xin loi, chi ho tro file JPG.";
+	echo "Xin loi, chi ho tro file JPG.<br>";
 	$uploadOK = 0;
 }
 
@@ -61,7 +61,8 @@ if ($uploadOK == 0){
 		echo "Xin loi, khong the upload file.";
 	}
 }
-if (isset($uploadOK) != 0){
+
+
 $db = new Db();
 $name = $_POST['name'];
 $type_id = $_POST['type_id'];
@@ -69,6 +70,6 @@ $manu_id = $_POST['manu_id'];
 $image = basename($_FILES['fileUpload']['name']);
 $description = $_POST['description'];
 $price = $_POST['price'];
-
+if ($uploadOK != 0) {
 $db->themProduct($name, $price, $image, $description, $manu_id, $type_id);
 }
