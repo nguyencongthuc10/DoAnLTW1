@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th10 09, 2018 lúc 09:40 AM
+-- Thời gian đã tạo: Th10 10, 2018 lúc 04:33 PM
 -- Phiên bản máy phục vụ: 5.7.21
 -- Phiên bản PHP: 5.6.35
 
@@ -70,11 +70,11 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`ID`, `name`, `price`, `image`, `description`, `manu_ID`, `type_ID`) VALUES
-(1, 'Iphone 5s', 2500000, 'iphone5.jpg', 'iPhone 5S là sản phẩm điện thoại Apple iPhone thông minh đầu tiên được trang bị chip xử lý 64 bit. Theo công bố của Apple, dòng chip Apple A7 sẽ giúp iPhone 5S mạnh gấp hai lần iPhone 5. Xa hơn nữa, iPhone 5S sẽ mạnh hơn iPhone đời đầu 40 lần về khả năng xử lý và 56 lần về khả năng đồ họa. Đây là sản phẩm với chip xử lý tiên tiến nhất của Apple tính đến thời điểm hiện tại.', 1001, 111),
-(2, 'Iphone 6', 3000000, 'iphone6.jpg', 'IPhone 6 là một trong những smartphone được yêu thích nhất của Apple. Lắng nghe nhu cầu về thiết kế, khả năng lưu trữ và giá cả, iPhone 6 32GB được chính thức phân phối chính hãng tại Việt Nam hứa hẹn sẽ là một sản phẩm rất \"Hot\".', 1001, 111),
-(3, 'Iphone 6 plus', 3500000, 'iphone6plus.jpg', 'Quá quen thuộc với màn hình khá nhỏ của các thiết bị iPhone cũ, iPhone 6 Plus là một thay đổi lớn về màn hình điện thoại khi đây là thiết bị đầu tiên của Apple có kích thước lên đến 5.5”. Điều mà bắt gặp ở các thế hệ iPhone trước như iPhone 5, iPhone 5S chỉ đạt kích thước màn hình tối đa là 4”. Về thiết kế, nếu như trong 4 thế hệ iPhone liên tiếp các thiết bị iPhone 4, iPhone 4S, iPhone 5, iPhone 5S sở hữu thiết kế vuông vức chắc chắn, bộ đôi iPhone 6 và iPhone 6 Plus cũng là thiết bị đầu tiên thay đổi thiết kế theo hướng bo cong, tạo cảm giác cầm nắm tốt cho người dùng.', 1001, 111),
-(4, 'Iphone 6s', 4000000, 'iphone6s.jpg', 'Nhìn chung iPhone 6S 16GB Quốc Tế cũ là những chiếc điện thoại xách tay có khả năng hoạt động tốt và bền. Giá bán iPhone 6S 16GB Quốc Tế cũ rất phù hợp với nhiều đối tượng, vì vậy mua iPhone 6S 16GB là sự lựa chọn hợp lý.', 1001, 111),
-(5, 'Iphone XS Max', 40000000, 'iphonexsmax.jpg', 'iPhone XS Max có màn hình 6,5 inch, kích thước lớn nhất từ trước đến nay trên một chiếc smartphone của “táo khuyết”. Tuy vậy, máy vẫn cho tổng thể gọn gàng', 1001, 111),
+(1, 'Iphone 5s', 7990000, 'iphone5.jpg', 'iPhone 5S là sản phẩm điện thoại Apple iPhone thông minh đầu tiên được trang bị chip xử lý 64 bit. Theo công bố của Apple, dòng chip Apple A7 sẽ giúp iPhone 5S mạnh gấp hai lần iPhone 5. Xa hơn nữa, iPhone 5S sẽ mạnh hơn iPhone đời đầu 40 lần về khả năng xử lý và 56 lần về khả năng đồ họa. Đây là sản phẩm với chip xử lý tiên tiến nhất của Apple tính đến thời điểm hiện tại.', 1001, 111),
+(2, 'Iphone 6', 8250000, 'iphone6.jpg', 'IPhone 6 là một trong những smartphone được yêu thích nhất của Apple. Lắng nghe nhu cầu về thiết kế, khả năng lưu trữ và giá cả, iPhone 6 32GB được chính thức phân phối chính hãng tại Việt Nam hứa hẹn sẽ là một sản phẩm rất \"Hot\".', 1001, 111),
+(3, 'Iphone 6 plus', 94900000, 'iphone6plus.jpg', 'Quá quen thuộc với màn hình khá nhỏ của các thiết bị iPhone cũ, iPhone 6 Plus là một thay đổi lớn về màn hình điện thoại khi đây là thiết bị đầu tiên của Apple có kích thước lên đến 5.5”. Điều mà bắt gặp ở các thế hệ iPhone trước như iPhone 5, iPhone 5S chỉ đạt kích thước màn hình tối đa là 4”. Về thiết kế, nếu như trong 4 thế hệ iPhone liên tiếp các thiết bị iPhone 4, iPhone 4S, iPhone 5, iPhone 5S sở hữu thiết kế vuông vức chắc chắn, bộ đôi iPhone 6 và iPhone 6 Plus cũng là thiết bị đầu tiên thay đổi thiết kế theo hướng bo cong, tạo cảm giác cầm nắm tốt cho người dùng.', 1001, 111),
+(4, 'Iphone 6s', 12990000, 'iphone6s.jpg', 'Nhìn chung iPhone 6S 16GB Quốc Tế cũ là những chiếc điện thoại xách tay có khả năng hoạt động tốt và bền. Giá bán iPhone 6S 16GB Quốc Tế cũ rất phù hợp với nhiều đối tượng, vì vậy mua iPhone 6S 16GB là sự lựa chọn hợp lý.', 1001, 111),
+(5, 'Iphone XS Max', 39990000, 'iphonexsmax.jpg', 'iPhone XS Max có màn hình 6,5 inch, kích thước lớn nhất từ trước đến nay trên một chiếc smartphone của “táo khuyết”. Tuy vậy, máy vẫn cho tổng thể gọn gàng', 1001, 111),
 (6, 'Samsung Galaxy J8', 6290000, 'samsunggalaxyj8.jpg', 'Sau nhiều thông tin rò rỉ thì Samsung Galaxy J8 đã chính thức được ra mắt với nhiều trang bị cao cấp với màn hình tràn viền, camera kép xóa phông cùng một hiệu năng ổn định.', 1002, 111),
 (7, 'Samsung Galaxy Note 8', 19990000, 'samsunggalaxynote8.jpg', 'Galaxy Note 8 là niềm hy vọng vực lại dòng Note danh tiếng của điện thoại Samsung với diện mạo nam tính, sang trọng. Máy trang bị camera kép xóa phông thời thượng, màn hình vô cực như trên S8 Plus, bút S Pen cùng nhiều tính năng mới và nhiều công nghệ được ưu ái.', 1002, 111),
 (8, 'Samsung Galaxy Note 9', 22990000, 'samsunggalaxynote9.jpg', 'Mang lại sự cải tiến đặc biệt trong cây bút S-Pen, siêu phẩm Samsung Galaxy Note 9 còn sở hữu dung lượng pin khủng lên tới 4.000 mAh cùng hiệu năng mạnh mẽ vượt bậc, xứng đáng là một trong những chiếc điện thoại cao cấp nhất của Samsung.', 1002, 111),
