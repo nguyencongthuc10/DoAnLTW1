@@ -153,7 +153,11 @@ require 'db.php';
 								<td><?php echo $value['description']?></td>
 								<td><?php echo $value['price']?></td>
 								<td>
+<<<<<<< HEAD
 									<a href="Edit.php?id=<?php echo $value['ID']?>" class="btn btn-success btn-mini">Edit</a>
+=======
+									<a href="formedit.php?id=<?php echo $value['ID']?>" class="btn btn-success btn-mini">Edit</a>
+>>>>>>> 60bcbe8e49b30238cf27d41f4dd970b59720bdf3
 									<a href="xoa.php?id=<?php echo $value['ID']?>" class="btn btn-danger btn-mini">Delete</a>
 								</td>
 							</tr>
