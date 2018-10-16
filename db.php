@@ -146,4 +146,10 @@ public function getManuID(){
 	return $this->getData($result);
 }
 
+public function getID($id){
+	$sql = "SELECT * FROM `products` WHERE `ID` = '$id'";
+	$result = self::$conn->query($sql);
+	return $this->getData($result);
+}
+
 }

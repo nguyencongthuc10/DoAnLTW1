@@ -149,7 +149,7 @@ if (isset($_GET['key'])) {
 								<td><?php echo $value['description']; ?></td>
 								<td><?php echo $value['price']; ?></td>
 								<td>
-									<a href="form.php" class="btn btn-success btn-mini">Edit</a>
+									<a href="formedit.php?id=<?php echo $value['ID']?>" class="btn btn-success btn-mini">Edit</a>
 									<a href="xoa.php?id=<?php echo $value['ID']?>" class="btn btn-danger btn-mini">Delete</a>
 								</td>
 							</tr>

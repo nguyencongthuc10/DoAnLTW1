@@ -1,6 +1,9 @@
+<?php 
+require "db.php";
+$id = $_GET['id'];
+$db = new Db();
+$id = $db->getID($id);
 
-<?php
-require 'db.php'; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,20 +19,6 @@ require 'db.php';
 	<link rel="stylesheet" href="public/css/matrix-media.css" />
 	<link href="public/font-awesome/css/font-awesome.css" rel="stylesheet" />
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-	<style type="text/css">
-		ul.pagination{
-			list-style: none;
-			float: right;
-		}
-		ul.pagination li.active{
-			font-weight: bold
-		}
-		ul.pagination li{
-		  float: left;
-		  display: inline-block;
-		  padding: 10px
-		}
-	</style>
 </head>
 <body>
 
@@ -70,7 +59,7 @@ require 'db.php';
 <!--start-top-serch-->
 <div id="search">
 	<form action="result.php" method="get">
-	<input  type="text" placeholder="Search here..." name="key"/>
+	<input type="text" placeholder="Search here..." name="key"/>
 	<button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
 </form>
 </div>
@@ -89,85 +78,109 @@ require 'db.php';
 
 	</ul>
 </div>
+
 <!-- BEGIN CONTENT -->
 <div id="content">
 	<div id="content-header">
-		<div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
-		<h1>Manage Products</h1>
+		<div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
+		<h1>Edit Product</h1>
 	</div>
 	<div class="container-fluid">
 		<hr>
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="widget-box">
-					<div class="widget-title"> <span class="icon"><a href="form.php"> <i class="icon-plus"></i> </a></span>
-						<h5>Products</h5>
+					<div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+						<h5>Product Detail</h5>
 					</div>
 					<div class="widget-content nopadding">
-						<table class="table table-bordered table-striped">
-							<thead>
-							<tr>
-								<th></th>
-								<th>Name</th>
-								<th>Category</th>
-								<th>Producer</th>
-								<th>Description</th>
-								<th>Price (VND)</th>
-								<th>Action</th>
-							</tr>
-							</thead>
-							<tbody>
-							<?php $db = new db();
-							//$product1 = $db->product1();
 
-							$per_page = 5;
-							if (isset($_GET['page']) == NULL)
-								{ 
-									$page = 1; 
-								}
-							else   
-								$page = $_GET['page'];   
-							$total = $db->getAllpd();
-							//var_dump($total); 
-							$url = $_SERVER['PHP_SELF'];
+						<!-- BEGIN USER FORM -->
+						<form action="edit.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+							<div class="control-group">
+								<label class="control-label">Name :</label>
+								<div class="controls">
+									<input type="text" class="span11" placeholder="Product name" name="name" value="<?php echo $id[0]['name'] ?>" /> *
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Choose a product type :</label>
+								<div class="controls">
+									<select name="type_id">
 
-							$product2 = $db->getAllProducts($page, $per_page);
-							//var_dump($prodyct2);
-							
-							
-							foreach ($product2 as $value) {
-							?>
-							<tr class="">
-								<td><img src="public/images/<?php echo $value['image']?>" /></td>
-								<td><?php echo $value['name'] ?></td>
-								<td><?php echo $value['type_name']?></td>
-								<td><?php echo $value['manu_name']?></td>
-								<td><?php echo $value['description']?></td>
-								<td><?php echo $value['price']?></td>
-								<td>
-									<a href="formedit.php?id=<?php echo $value['ID']?>" class="btn btn-success btn-mini">Edit</a>
-									<a href="xoa.php?id=<?php echo $value['ID']?>" class="btn btn-danger btn-mini">Delete</a>
-								</td>
-							</tr>
+										<?php
+										
+										$protype1 = $db->getProtype();
+										foreach ($protype1 as  $value) {
+											# code...
+										
+										?>
 
-							<?php
-							}
-							?>
-							
-							
-						</tbody>
-						</table>
-						<ul class="pagination">
-							<?php echo $db->paginate($url, $total, $page, $per_page); ?>
-						</ul>
-						
+										<option <?php if($value['type_ID'] == $id[0]['type_ID']) { echo "selected='selected'";} ?>  value="<?php echo $value['type_ID'] ?>" ><?php echo $value['type_name'] ?></option>
+										<?php
+										}
+										?>
+
+									</select> *
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">Choose a manufacture :</label>
+								<div class="controls">
+									<select name="manu_id">
+
+										<?php
+										$manufactures1 = $db->getManuID();
+
+										foreach ($manufactures1 as  $value) {
+											# code...
+										?>
+										
+										<option <?php if($value['manu_ID'] == $id[0]['manu_ID']) { echo "selected='selected'";} ?> value="<?php echo $value['manu_ID'] ?>"><?php echo $value['manu_name'] ?></option>
+										
+										<?php
+										}
+										?>
+
+									</select> *
+								</div>
+								<div class="control-group">
+									<label class="control-label">Choose an image :</label>
+									<div class="controls">
+										<input type="file" name="fileUpload" id="fileUpload">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label"  >Description</label>
+									<div class="controls">
+										<textarea class="span11" placeholder="Description" name = "description" ><?php echo $id[0]['description'] ?></textarea>
+									</div>
+									<div class="control-group">
+										<label class="control-label">Price :</label>
+										<div class="controls">
+											<input type="text" class="span11" placeholder="price" name = "price" value="<?php echo $id[0]['price']; ?>" /> *
+										</div>
+
+									</div>
+
+									<div class="form-actions">
+										<button type="submit" class="btn btn-success">SaveEdit</button>
+									</div>
+								</div>
+
+						</form>
+						<!-- END USER FORM -->
+
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 <!-- END CONTENT -->
+
 <!--Footer-part-->
 <div class="row-fluid">
 	<div id="footer" class="span12"> 2018 &copy; TDC - Lập trình web 1</div>
@@ -183,4 +196,3 @@ require 'db.php';
 <script src="public/js/matrix.tables.js"></script>
 </body>
 </html>
-
