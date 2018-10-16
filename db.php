@@ -113,7 +113,12 @@ public function paginate1($url, $total, $page, $per_page, $key)
 	return $link; 
 } 
 
-
+public function getUserName($user)
+{
+	$sql = "SELECT * FROM `passcode` WHERE `admin` = `#user`";
+	$result = self::$conn->query($sql);
+	return $this->getData($result);
+}
 public function getAllpd()
 {
 	$sql = "SELECT * FROM `products`";

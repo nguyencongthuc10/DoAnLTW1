@@ -1,5 +1,12 @@
 
-<?php
+
+<?php 
+session_start();
+if (!isset($_SESSION['user'])) {
+	header("location:login.php");
+}
+ ?>
+ <?php
 require 'db.php'; 
 ?>
 <!DOCTYPE html>
@@ -32,6 +39,7 @@ require 'db.php';
 	</style>
 </head>
 <body>
+
 
 <!--Header-part-->
 <div id="header">
