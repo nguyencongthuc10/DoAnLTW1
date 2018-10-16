@@ -1,5 +1,4 @@
 
-
 <?php 
 session_start();
 if (!isset($_SESSION['user'])) {
@@ -36,6 +35,8 @@ require 'db.php';
 		  display: inline-block;
 		  padding: 10px
 		}
+		
+		
 	</style>
 </head>
 <body>
@@ -56,7 +57,7 @@ require 'db.php';
 				<li class="divider"></li>
 				<li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
 				<li class="divider"></li>
-				<li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+				<li><a href="login.php"><i class="icon-key"></i> Log Out</a></li>
 			</ul>
 		</li>
 		<li class="dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a>
@@ -71,7 +72,7 @@ require 'db.php';
 			</ul>
 		</li>
 		<li class=""><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li>
-		<li class=""><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+		<li class=""><a title="" href="login.php"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
 	</ul>
 </div>
 
@@ -153,11 +154,11 @@ require 'db.php';
 								<td><?php echo $value['description']?></td>
 								<td><?php echo $value['price']?></td>
 								<td>
-<<<<<<< HEAD
-									<a href="Edit.php?id=<?php echo $value['ID']?>" class="btn btn-success btn-mini">Edit</a>
-=======
+
+									<!-- <a href="Edit.php?id=<?php echo $value['ID']?>" class="btn btn-success btn-mini">Edit</a> -->
+
 									<a href="formedit.php?id=<?php echo $value['ID']?>" class="btn btn-success btn-mini">Edit</a>
->>>>>>> 60bcbe8e49b30238cf27d41f4dd970b59720bdf3
+
 									<a href="xoa.php?id=<?php echo $value['ID']?>" class="btn btn-danger btn-mini">Delete</a>
 								</td>
 							</tr>

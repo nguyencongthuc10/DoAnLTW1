@@ -96,7 +96,7 @@ $id = $db->getID($id);
 					<div class="widget-content nopadding">
 
 						<!-- BEGIN USER FORM -->
-						<form action="edit.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+						<form action="capnhatmoi.php" method="post" class="form-horizontal" enctype="multipart/form-data">
 							<div class="control-group">
 								<label class="control-label">Name :</label>
 								<div class="controls">

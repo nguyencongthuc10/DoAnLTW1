@@ -151,7 +151,7 @@ public function getManuID(){
 	return $this->getData($result);
 }
 
-<<<<<<< HEAD
+
 public function layid($id)
 {
 	$sql = "SELECT * FROM `products` WHERE `ID` = '$id'";                                               
@@ -165,12 +165,12 @@ public function edit($name, $price, $image, $description, $manu_id,$type_id,$id)
 	header("location:index.php");
 	
 }
-=======
+
 public function getID($id){
 	$sql = "SELECT * FROM `products` WHERE `ID` = '$id'";
 	$result = self::$conn->query($sql);
 	return $this->getData($result);
 }
 
->>>>>>> 60bcbe8e49b30238cf27d41f4dd970b59720bdf3
+
 }
