@@ -1,4 +1,9 @@
-
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+	header("location:login.php");
+}
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,7 +116,7 @@
 								<td><?php echo $value['manu_name']; ?></td>
 								<td><img  width="200px" src="public/images/<?php echo $value['manu_img']; ?>" ></td>
 								<td>
-									<a href="#" class="btn btn-success btn-mini">Edit</a>
+									<a href="manufacturesedit.php?manu_id=<?php echo $value['manu_ID']?>&manu_name=<?php echo $value['manu_name']; ?>&img=<?php echo $value['manu_img']?>" class="btn btn-success btn-mini">Edit</a>
 									<a href="xoaManufacture.php?manu_id=<?php echo $value['manu_ID']?>" class="btn btn-danger btn-mini">Delete</a>
 								</td>
 							</tr>

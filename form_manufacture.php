@@ -77,7 +77,7 @@
 <div id="content">
 	<div id="content-header">
 		<div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
-		<h1>Add New Product</h1>
+		<h1>Add New Manufacture</h1>
 	</div>
 	<div class="container-fluid">
 		<hr>

@@ -1,20 +1,18 @@
-<?php
+<?php 
 require "db.php";
 $db = new Db();
-//kiem tra name khong duoc de trong
-if (isset($_POST['name'])? $_POST['name'] : ""){
-	$name = $_POST['name'];
-}else{
-	echo "Name khong duoc de trong<br>";
-	exit();
-}
+
+$manu_id = $_POST['manu_ID'];
+$manu_name = $_POST['manu_name'];
 
 
 $id = $_GET['id'];
-$type_id = $_POST['type_id'];
-$manu_id = $_POST['manu_id'];
-$description = $_POST['description'];
-$price = $_POST['price'];
+
+
+if ($_FILES['fileUpload']['name'] == ""){
+	$manu_img = $_GET['img'];
+
+}else{
 
 $targetDir = "public/images/";
 $targetFile = $targetDir.basename($_FILES['fileUpload']['name']);
@@ -31,12 +29,8 @@ if (isset($_POST['submit'])) {
 		exit();
 	}
 }
-//var_dump($_FILES['fileUpload']);
-//	exit();
 
-if ($_FILES['fileUpload']['name'] == ""){
-	$image = $_GET['img'];
-}else{
+
 
 //kiem tra co chon file image
 if (basename($_FILES['fileUpload']['name']) == "")
@@ -59,7 +53,7 @@ if ($_FILES['fileUpload']['size'] > 100000 ){
 
 //kiem tra file co ton tai tren sever hay khong 
 if (file_exists($targetFile)){
-	echo "Xin loi, file  hinh da ton tai.<br>";
+	echo "Xin loi, file da ton tai.<br>";
 	exit();
 }
 
@@ -72,10 +66,8 @@ if (move_uploaded_file($_FILES['fileUpload']['tmp_name'], $targetFile)){
 	exit();
 }
 
-
-$image = basename($_FILES['fileUpload']['name']);
-
-
+$manu_img = basename($_FILES['fileUpload']['name']);
 }
-$db->edit($name, $price, $image, $description, $manu_id,$type_id,$id);
-//thong bao cap nhat du lieu thanh cong 
+
+$db->editManufacture($manu_id, $manu_name, $manu_img, $id);
+//thong bao cap nhat manufacture thanh cong

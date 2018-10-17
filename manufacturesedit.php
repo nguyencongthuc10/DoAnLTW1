@@ -1,9 +1,7 @@
-<?php 
-require "db.php";
-$id1 = $_GET['id'];
-$db = new Db();
-$id = $db->getID($id1);
-
+<?php
+$manu_id = $_GET['manu_id'];
+$manu_name = $_GET['manu_name'];
+$manu_img = $_GET['img'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +81,7 @@ $id = $db->getID($id1);
 <div id="content">
 	<div id="content-header">
 		<div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
-		<h1>Edit Product</h1>
+		<h1>Edit Manufacture</h1>
 	</div>
 	<div class="container-fluid">
 		<hr>
@@ -96,77 +94,38 @@ $id = $db->getID($id1);
 					<div class="widget-content nopadding">
 
 						<!-- BEGIN USER FORM -->
-						<form action="capnhatmoi.php?id=<?php echo $id1 ?>&img=<?php echo $id[0]['image'] ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
+						<form action="EditManufacture.php?img=<?php echo $manu_img; ?>&id=<?php echo $manu_id; ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
+							
+
 							<div class="control-group">
-								<label class="control-label">Name :</label>
+								<label class="control-label">Manu_ID :</label>
 								<div class="controls">
-									<input type="text" class="span11" placeholder="Product name" name="name" value="<?php echo $id[0]['name'] ?>" /> *
+									<input type="text" class="span11" placeholder="Manu_ID" 
+									name="manu_ID" value="<?php echo $manu_id; ?>" /> *
 								</div>
 							</div>
+
+
 							<div class="control-group">
-								<label class="control-label">Choose a product type :</label>
+								<label class="control-label">Manufacture Name :</label>
 								<div class="controls">
-									<select name="type_id">
-
-										<?php
-										
-										$protype1 = $db->getProtype();
-										foreach ($protype1 as  $value) {
-											# code...
-										
-										?>
-
-										<option <?php if($value['type_ID'] == $id[0]['type_ID']) { echo "selected='selected'";} ?>  value="<?php echo $value['type_ID'] ?>" ><?php echo $value['type_name'] ?></option>
-										<?php
-										}
-										?>
-
-									</select> *
+									<input type="text" class="span11" placeholder="Manufacture name" name="manu_name" value="<?php echo $manu_name; ?>" /> *
 								</div>
 							</div>
+
+	
 							<div class="control-group">
-								<label class="control-label">Choose a manufacture :</label>
-								<div class="controls">
-									<select name="manu_id">
-
-										<?php
-										$manufactures1 = $db->getManuID();
-
-										foreach ($manufactures1 as  $value) {
-											# code...
-										?>
-										
-										<option <?php if($value['manu_ID'] == $id[0]['manu_ID']) { echo "selected='selected'";} ?> value="<?php echo $value['manu_ID'] ?>"><?php echo $value['manu_name'] ?></option>
-										
-										<?php
-										}
-										?>
-
-									</select> *
-								</div>
-								<div class="control-group">
 									<label class="control-label">Choose an image :</label>
 									<div class="controls">
 										<input type="file" name="fileUpload" id="fileUpload">
 									</div>
 								</div>
-								<div class="control-group">
-									<label class="control-label"  >Description</label>
-									<div class="controls">
-										<textarea class="span11" placeholder="Description" name = "description" ><?php echo $id[0]['description'] ?></textarea>
-									</div>
-									<div class="control-group">
-										<label class="control-label">Price :</label>
-										<div class="controls">
-											<input type="text" class="span11" placeholder="price" name = "price" value="<?php echo $id[0]['price']; ?>" /> *
-										</div>
+	
 
-									</div>
-
-									<div class="form-actions">
-										<button type="submit" class="btn btn-success">SaveEdit</button>
-									</div>
+								<div class="form-actions">
+									<button type="submit" class="btn btn-success">SaveEdit</button>
 								</div>
+							</div>
 
 						</form>
 						<!-- END USER FORM -->
@@ -180,7 +139,6 @@ $id = $db->getID($id1);
 </div>
 
 <!-- END CONTENT -->
-
 <!--Footer-part-->
 <div class="row-fluid">
 	<div id="footer" class="span12"> 2018 &copy; TDC - Lập trình web 1</div>

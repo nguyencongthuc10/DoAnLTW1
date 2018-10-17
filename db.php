@@ -173,4 +173,10 @@ public function getID($id){
 }
 
 
+public function editManufacture($manu_id, $manu_name, $manu_img, $id){
+	$sql = "UPDATE `manufactures` SET `manu_ID`='$manu_id',`manu_name`='$manu_name',`manu_img`= '$manu_img' WHERE `manu_ID` = '$id'";
+	$result = self::$conn->query($sql);
+	header("location:manufactures.php");
+}
+
 }
