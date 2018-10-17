@@ -2,19 +2,17 @@
 require "db.php";
 $db = new Db();
 //kiem tra name khong duoc de trong
-if (isset($_POST['name'])? $_POST['name'] : ""){
-	$name = $_POST['name'];
-}else{
-	echo "Name khong duoc de trong<br>";
-	exit();
-}
+$name = $_POST['name'];
 
 
 $id = $_GET['id'];
+
+$price = $_POST['price'];
+
 $type_id = $_POST['type_id'];
 $manu_id = $_POST['manu_id'];
 $description = $_POST['description'];
-$price = $_POST['price'];
+
 
 $targetDir = "public/images/";
 $targetFile = $targetDir.basename($_FILES['fileUpload']['name']);
